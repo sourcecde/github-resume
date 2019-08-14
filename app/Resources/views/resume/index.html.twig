@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GitHub Resume{% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1>GitHub Resume</h1>
+            </div>
+
+            <div id="content">
+                <p>
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

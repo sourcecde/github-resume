@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GitHub Resume for {{ user.login }}{% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1>GitHub Resume Generator</h1>
+                {% if user.avatar_url is not empty %}
+                <img src="{{ user.avatar_url }}" alt="avatar of {{ user.login }}">
+                {% endif %}
+            </div>
+
+            <div style="clear: both;"></div>
+
+            <div id="content">
+                <table>
+                    <tr>
+                        <td><strong>Username:</strong>{{ user.login }}</td>
+                        
+                    </tr>
+                    {% if user.blog is not empty %}
+                    <tr>
+                        <td><strong>Website:</strong><a href="{{ user.blog }}">{{ user.blog }}</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <td>Total numbers of Repositories are {{ total }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Repositores:</strong></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                {% for repo in repos %}
+                                    <li>
+                                        <a href="{{ repo.html_url }}">{{ repo.name }}</a>-
+                                        <h6>{{ repo.description }}</h6>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Languages:</strong></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                {% for lang in langs %}
+                                    <li>
+                                        {{ lang.name }} - {{ lang.percentage }}%
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

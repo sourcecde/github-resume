@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GitHub Resume - Error{% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1>GitHub Resume</h1>
+            </div>
+
+            <div id="content">
+                <p>
+                    {% for error in app.flashes('error') %}
+                        {{ error }}
+                    {% endfor %}
+                </p>
+            </div>
+
+            <div id="back">
+                <p>
+                   Sorry! There is an error in your username.Please check it. <a href="{{ url('homepage') }}">
+                        BACK
+                    </a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
